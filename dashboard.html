@@ -1,1 +1,38 @@
+<!DOCTYPE html>
+<html>
 
+<head>
+
+<title>Dashboard</title>
+
+</head>
+
+<body>
+
+<h1>Dashboard Building Care System</h1>
+
+<h3 id="nama"></h3>
+
+<button onclick="logout()">
+Logout
+</button>
+
+<script src="js/config.js"></script>
+<script src="js/auth.js"></script>
+
+<script>
+
+checkLogin();
+
+const user = getSession();
+
+document
+.getElementById("nama")
+.innerText =
+"Selamat Datang, " + user.nama;
+
+</script>
+
+</body>
+
+</html>
