@@ -1,40 +1,47 @@
-// Dashboard JS
 checkLogin();
 
-const user = getSession();
+const user=getSession();
 
-document.getElementById("welcome").innerHTML =
+document.getElementById("welcome").innerHTML=
+
 `Selamat datang, <b>${user.nama}</b>`;
 
-loadDashboard();
+init();
 
-async function loadDashboard() {
+async function init(){
 
-    const result = await api("dashboard");
+    await loadDashboard();
 
-    console.log("Dashboard:", result);
+}
 
-    if (!result.success) {
+async function loadDashboard(){
+
+    const result=
+
+    await DashboardService.summary();
+
+    if(!result.success){
+
         alert(result.message);
+
         return;
+
     }
 
-    const summary = result.summary;
-    console.log("Summary:", summary);
-    console.log("Total:", summary.total);
-    console.log("AC:", summary.ac);
+    const data=result.summary;
 
-    document.getElementById("total").textContent = summary.total;
-    document.getElementById("ac").textContent = summary.ac;
-    document.getElementById("listrik").textContent = summary.listrik;
-    document.getElementById("air").textContent = summary.air;
+    document.getElementById("total").textContent=data.total;
 
-    const open = document.getElementById("open");
-    const progress = document.getElementById("progress");
-    const done = document.getElementById("done");
+    document.getElementById("ac").textContent=data.ac;
 
-    if (open) open.textContent = summary.pending;
-    if (progress) progress.textContent = summary.progress;
-    if (done) done.textContent = summary.selesai;
+    document.getElementById("listrik").textContent=data.listrik;
+
+    document.getElementById("air").textContent=data.air;
+
+    document.getElementById("open").textContent=data.pending;
+
+    document.getElementById("progress").textContent=data.progress;
+
+    document.getElementById("done").textContent=data.selesai;
 
 }
