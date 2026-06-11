@@ -19,6 +19,9 @@ async function loadDashboard() {
     }
 
     const summary = result.summary;
+    console.log("Summary:", summary);
+    console.log("Total:", summary.total);
+    console.log("AC:", summary.ac);
 
     document.getElementById("total").textContent = summary.total;
     document.getElementById("ac").textContent = summary.ac;
