@@ -120,8 +120,9 @@ async function login(e){
 
     const result =
         await AuthService.login(email,password);
-
-    console.log("LOGIN RESULT :", result);
+console.log("LOGIN RESULT =", result);
+console.log("SUCCESS =", result.success);
+console.log("USER =", result.user);
 
     btn.disabled = false;
 
