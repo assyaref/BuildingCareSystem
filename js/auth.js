@@ -1,17 +1,8 @@
-function saveSession(user) {
+function saveSession(user){
 
-    sessionStorage.setItem(
+    localStorage.setItem(
 
-        CONFIG.SESSION_KEY,
-
-        JSON.stringify(user)
-
-    );
-function saveSession(user) {
-
-    sessionStorage.setItem(
-
-        CONFIG.SESSION_KEY,
+        CONFIG.STORAGE.USER,
 
         JSON.stringify(user)
 
@@ -19,62 +10,29 @@ function saveSession(user) {
 
 }
 
-function getSession() {
+function getSession(){
 
     return JSON.parse(
 
-        sessionStorage.getItem(CONFIG.SESSION_KEY)
+        localStorage.getItem(CONFIG.STORAGE.USER)
 
     );
 
 }
 
-function logout() {
+function logout(){
 
-    sessionStorage.removeItem(
+    localStorage.clear();
 
-        CONFIG.SESSION_KEY
-
-    );
-
-    location.href = "index.html";
+    location.href="index.html";
 
 }
 
-function checkLogin() {
+function checkLogin(){
 
-    if (!getSession()) {
+    if(!getSession()){
 
-        location.href = "index.html";
-
-    }
-
-}
-}
-
-function getSession() {
-
-    return JSON.parse(
-
-        sessionStorage.getItem(CONFIG.SESSION_KEY)
-
-    );
-
-}
-
-function logout() {
-
-    sessionStorage.removeItem(CONFIG.SESSION_KEY);
-
-    window.location.href = "index.html";
-
-}
-
-function checkLogin() {
-
-    if (!getSession()) {
-
-        window.location.href = "index.html";
+        location.href="index.html";
 
     }
 
