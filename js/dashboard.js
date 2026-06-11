@@ -11,14 +11,11 @@ async function loadDashboard() {
 
     const result = await api("dashboard");
 
-    console.log(result);
+    console.log("Dashboard:", result);
 
     if (!result.success) {
-
         alert(result.message);
-
         return;
-
     }
 
     const summary = result.summary;
