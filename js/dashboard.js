@@ -1,3 +1,4 @@
+// Dashboard JS
 checkLogin();
 
 const user = getSession();
