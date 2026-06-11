@@ -1,20 +1,47 @@
 :root{
 
-    --primary:#005BAC;
-    --secondary:#0F172A;
-    --success:#22C55E;
-    --warning:#F59E0B;
-    --danger:#EF4444;
-    --background:#F5F7FA;
+    --primary:#0d5cab;
+
+    --success:#28c76f;
+
+    --danger:#ea5455;
+
+    --warning:#ff9f43;
+
+    --background:#eef2f6;
+
+}
+
+*{
+
+    margin:0;
+
+    padding:0;
+
+    box-sizing:border-box;
+
+    font-family:Poppins,sans-serif;
 
 }
 
 body{
 
-    margin:0;
-
     background:var(--background);
 
-    font-family:Poppins,sans-serif;
+}
+
+a{
+
+    text-decoration:none;
+
+}
+
+.card{
+
+    border:none;
+
+    border-radius:20px;
+
+    box-shadow:0 5px 20px rgba(0,0,0,.08);
 
 }
