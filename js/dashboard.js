@@ -1,35 +1,3 @@
-checkLogin();
+const result = await api("dashboard");
 
-const user = getSession();
-
-document.getElementById("welcome").innerHTML =
-    `Selamat datang, <b>${user.nama}</b>`;
-
-loadDashboard();
-
-async function loadDashboard() {
-
-    const result = await api("dashboard");
-
-    console.log("Dashboard:", result);
-
-    if (!result.success) {
-
-        alert(result.message);
-
-        return;
-
-    }
-
-    document.getElementById("total").innerText =
-        result.total;
-
-    document.getElementById("ac").innerText =
-        result.ac;
-
-    document.getElementById("listrik").innerText =
-        result.listrik;
-
-    document.getElementById("air").innerText =
-        result.air;
-}
+console.log(result);
