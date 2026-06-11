@@ -1,39 +1,27 @@
-async function api(action, data = {}) {
+const API = CONFIG.API_URL;
 
-    try {
+async function api(action,data={}){
 
-        const response = await fetch(CONFIG.API_URL, {
+    const response = await fetch(API,{
 
-            method: "POST",
+        method:"POST",
 
-            headers: {
-                "Content-Type": "application/json"
-            },
+        headers:{
 
-            body: JSON.stringify({
+            "Content-Type":"text/plain;charset=utf-8"
 
-                action,
+        },
 
-                ...data
+        body:JSON.stringify({
 
-            })
+            action,
 
-        });
+            ...data
 
-        return await response.json();
+        })
 
-    } catch (error) {
+    });
 
-        console.error(error);
-
-        return {
-
-            success: false,
-
-            message: "Tidak dapat terhubung ke server."
-
-        };
-
-    }
+    return await response.json();
 
 }
