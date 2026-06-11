@@ -4,7 +4,7 @@
 <head>
 
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
 <title>Dashboard</title>
 
@@ -21,13 +21,85 @@
 
 <div class="sidebar">
 
-    ...
+    <div class="brand">
+
+        <img src="assets/logo.png" class="brand-logo">
+
+        <h4>BCS</h4>
+
+    </div>
+
+    <a href="dashboard.html">
+        <i class="bi bi-speedometer2"></i>
+        Dashboard
+    </a>
+
+    <a href="report.html">
+        <i class="bi bi-file-earmark-plus"></i>
+        Laporan
+    </a>
+
+    <a href="history.html">
+        <i class="bi bi-clock-history"></i>
+        Riwayat
+    </a>
+
+    <a href="profile.html">
+        <i class="bi bi-person"></i>
+        Profil
+    </a>
+
+    <button
+        class="btn btn-danger mt-auto"
+        onclick="logout()">
+
+        Logout
+
+    </button>
 
 </div>
 
 <div class="main-content">
 
-    ...
+    <div class="header">
+
+        <h2>Dashboard</h2>
+
+        <p id="welcome"></p>
+
+    </div>
+
+    <div class="row g-3">
+
+        <div class="col-md-3">
+            <div class="stat-card">
+                <h6>Total</h6>
+                <h2 id="total">0</h2>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="stat-card">
+                <h6>AC</h6>
+                <h2 id="ac">0</h2>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="stat-card">
+                <h6>Listrik</h6>
+                <h2 id="listrik">0</h2>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="stat-card">
+                <h6>Air</h6>
+                <h2 id="air">0</h2>
+            </div>
+        </div>
+
+    </div>
 
 </div>
 
@@ -37,5 +109,4 @@
 <script src="js/dashboard.js"></script>
 
 </body>
-
 </html>
