@@ -1,1 +1,55 @@
+.sidebar{
 
+    width:280px;
+
+    height:100vh;
+
+    position:fixed;
+
+    background:#0d5cab;
+
+    color:white;
+
+    display:flex;
+
+    flex-direction:column;
+
+}
+
+.sidebar a{
+
+    color:white;
+
+    padding:16px;
+
+    display:block;
+
+    transition:.3s;
+
+}
+
+.sidebar a:hover{
+
+    background:rgba(255,255,255,.15);
+
+}
+
+.main-content{
+
+    margin-left:280px;
+
+    padding:35px;
+
+}
+
+.stat-card{
+
+    background:white;
+
+    border-radius:20px;
+
+    padding:25px;
+
+    box-shadow:0 5px 15px rgba(0,0,0,.08);
+
+}
