@@ -104,55 +104,42 @@ async function login(e){
 
     e.preventDefault();
 
-    const email=document.getElementById("email").value.trim();
+    const email =
+        document.getElementById("email").value.trim();
 
-    const password=document.getElementById("password").value.trim();
+    const password =
+        document.getElementById("password").value.trim();
 
-    const btn=document.getElementById("btnLogin");
+    const btn =
+        document.getElementById("btnLogin");
 
-    btn.disabled=true;
+    btn.disabled = true;
 
-    btn.innerHTML=
+    btn.innerHTML =
+        '<span class="spinner-border spinner-border-sm"></span> Login...';
 
-    '<span class="spinner-border spinner-border-sm"></span> Login...';
+    const result =
+        await AuthService.login(email,password);
 
-    const result=
+    console.log("LOGIN RESULT :", result);
 
-    await AuthService.login(
+    btn.disabled = false;
 
-        email,
+    btn.innerHTML = "Login";
 
-        password
+    if(!result.success){
 
-    );
+        alert(result.message);
 
-    btn.disabled=false;
+        return;
 
-    btn.innerHTML="Login";
-
-    if(result.success){
-console.log(result);
-
-if(result.success){
+    }
 
     console.log("USER :", result.user);
 
     saveSession(result.user);
 
-    location.href="dashboard.html";
-
-}
-        saveSession(result.user);
-
-        location.href="dashboard.html";
-
-    }
-
-    else{
-
-        alert(result.message);
-
-    }
+    location.href = "dashboard.html";
 
 }
 
