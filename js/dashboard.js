@@ -3,7 +3,7 @@ checkLogin();
 const user = getSession();
 
 document.getElementById("welcome").innerHTML =
-    "Selamat datang, <b>" + user.nama + "</b>";
+    `Selamat datang, <b>${user.nama}</b>`;
 
 loadDashboard();
 
@@ -11,7 +11,7 @@ async function loadDashboard() {
 
     const result = await api("dashboard");
 
-    console.log(result);
+    console.log("Dashboard:", result);
 
     if (!result.success) {
 
@@ -21,12 +21,15 @@ async function loadDashboard() {
 
     }
 
-    document.getElementById("total").innerText = result.total;
-    document.getElementById("ac").innerText = result.ac;
-    document.getElementById("listrik").innerText = result.listrik;
-    document.getElementById("air").innerText = result.air;
-    document.getElementById("open").innerText = result.pending;
-    document.getElementById("progress").innerText = result.progress;
-    document.getElementById("done").innerText = result.selesai;
+    document.getElementById("total").innerText =
+        result.total;
 
+    document.getElementById("ac").innerText =
+        result.ac;
+
+    document.getElementById("listrik").innerText =
+        result.listrik;
+
+    document.getElementById("air").innerText =
+        result.air;
 }
