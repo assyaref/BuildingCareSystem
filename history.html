@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>History - Building Care System</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/dashboard.css">
+  <link rel="stylesheet" href="css/components.css">
+</head>
+<body>
+  <div class="dashboard-container">
+    <aside class="sidebar">
+      <h2>🏢 BCS</h2>
+      <ul>
+        <li><a href="dashboard.html">Dashboard</a></li>
+        <li><a href="report.html">Reports</a></li>
+        <li><a href="history.html" class="active">History</a></li>
+        <li><a href="profile.html">Profile</a></li>
+        <li><a href="#" id="logoutBtn">Logout</a></li>
+      </ul>
+    </aside>
+
+    <main class="main-content">
+      <div class="header">
+        <h1>Activity History</h1>
+        <div>
+          <button class="btn btn-secondary" id="exportHistoryBtn">Export</button>
+        </div>
+      </div>
+
+      <div class="form" style="margin-bottom: 2rem;">
+        <form id="filterForm">
+          <div class="form-group">
+            <label for="dateRange">Date Range</label>
+            <input type="date" id="dateRange" name="dateRange">
+          </div>
+          <div class="form-group">
+            <label for="activityType">Activity Type</label>
+            <select id="activityType" name="activityType">
+              <option value="">All Activities</option>
+              <option value="login">Login</option>
+              <option value="report">Report Generated</option>
+              <option value="maintenance">Maintenance</option>
+            </select>
+          </div>
+          <button type="submit" class="btn btn-primary">Filter</button>
+        </form>
+      </div>
+
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Date & Time</th>
+            <th>Activity</th>
+            <th>User</th>
+            <th>Details</th>
+          </tr>
+        </thead>
+        <tbody id="historyContainer">
+          <tr>
+            <td colspan="4">Loading history...</td>
+          </tr>
+        </tbody>
+      </table>
+    </main>
+  </div>
+
+  <script src="js/config.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/utils.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      if (!auth.isAuthenticated()) {
+        window.location.href = '/index.html';
+      }
+
+      // Load history data
+      loadHistory();
+
+      const filterForm = document.getElementById('filterForm');
+      filterForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        loadHistory();
+      });
+
+      const logoutBtn = document.getElementById('logoutBtn');
+      logoutBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        if (confirm('Are you sure you want to logout?')) {
+          auth.logout();
+        }
+      });
+    });
+
+    async function loadHistory() {
+      try {
+        const data = await api.get(CONFIG.ENDPOINTS.HISTORY);
+        displayHistory(data);
+      } catch (error) {
+        console.error('Failed to load history:', error);
+        showNotification('Failed to load history', 'danger');
+      }
+    }
+
+    function displayHistory(data) {
+      const container = document.getElementById('historyContainer');
+      if (!data.activities || data.activities.length === 0) {
+        container.innerHTML = '<tr><td colspan="4">No activities found</td></tr>';
+        return;
+      }
+
+      let html = '';
+      data.activities.forEach(activity => {
+        html += `
+          <tr>
+            <td>${formatDate(activity.timestamp, 'DD/MM/YYYY HH:mm')}</td>
+            <td>${activity.type}</td>
+            <td>${activity.user}</td>
+            <td>${activity.details}</td>
+          </tr>
+        `;
+      });
+      container.innerHTML = html;
+    }
+  </script>
+</body>
+</html>
