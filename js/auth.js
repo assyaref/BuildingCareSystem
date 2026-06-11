@@ -7,7 +7,49 @@ function saveSession(user) {
         JSON.stringify(user)
 
     );
+function saveSession(user) {
 
+    sessionStorage.setItem(
+
+        CONFIG.SESSION_KEY,
+
+        JSON.stringify(user)
+
+    );
+
+}
+
+function getSession() {
+
+    return JSON.parse(
+
+        sessionStorage.getItem(CONFIG.SESSION_KEY)
+
+    );
+
+}
+
+function logout() {
+
+    sessionStorage.removeItem(
+
+        CONFIG.SESSION_KEY
+
+    );
+
+    location.href = "index.html";
+
+}
+
+function checkLogin() {
+
+    if (!getSession()) {
+
+        location.href = "index.html";
+
+    }
+
+}
 }
 
 function getSession() {
