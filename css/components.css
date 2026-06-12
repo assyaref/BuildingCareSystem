@@ -23,3 +23,74 @@
     backdrop-filter:blur(3px);
 
 }
+```css
+/* ===========================
+   TOAST
+=========================== */
+
+.toast-custom{
+
+    position:fixed;
+
+    top:20px;
+
+    right:20px;
+
+    min-width:260px;
+
+    padding:14px 20px;
+
+    border-radius:10px;
+
+    color:#fff;
+
+    font-weight:500;
+
+    opacity:0;
+
+    transform:translateY(-20px);
+
+    transition:.3s;
+
+    z-index:99999;
+
+    box-shadow:0 10px 20px rgba(0,0,0,.15);
+
+}
+
+.toast-custom.show{
+
+    opacity:1;
+
+    transform:translateY(0);
+
+}
+
+.toast-custom.success{
+
+    background:#198754;
+
+}
+
+.toast-custom.danger{
+
+    background:#dc3545;
+
+}
+
+.toast-custom.warning{
+
+    background:#ffc107;
+
+    color:#000;
+
+}
+
+.toast-custom.info{
+
+    background:#0dcaf0;
+
+    color:#000;
+
+}
+```
