@@ -1,72 +1,59 @@
+```javascript
 const Toast = {
 
-    show(message,type="success"){
+    show(message, type = "success") {
 
-        const toast=document.createElement("div");
+        const toast = document.createElement("div");
 
-        toast.className=`toast-custom ${type}`;
+        toast.className = `toast-custom ${type}`;
 
-        toast.innerHTML=message;
+        toast.innerHTML = message;
 
         document.body.appendChild(toast);
 
-        setTimeout(()=>{
+        setTimeout(() => {
 
             toast.classList.add("show");
 
-        },100);
+        }, 100);
 
-        setTimeout(()=>{
+        setTimeout(() => {
 
-            toast.remove();
+            toast.classList.remove("show");
 
-        },3000);
+            setTimeout(() => {
+
+                toast.remove();
+
+            }, 300);
+
+        }, 3000);
+
+    },
+
+    success(message) {
+
+        this.show(message, "success");
+
+    },
+
+    error(message) {
+
+        this.show(message, "danger");
+
+    },
+
+    warning(message) {
+
+        this.show(message, "warning");
+
+    },
+
+    info(message) {
+
+        this.show(message, "info");
 
     }
 
 };
-
-// CSS
-.toast-custom{
-
-    position:fixed;
-
-    right:20px;
-
-    top:20px;
-
-    background:#198754;
-
-    color:white;
-
-    padding:14px 22px;
-
-    border-radius:10px;
-
-    opacity:0;
-
-    transition:.3s;
-
-    z-index:99999;
-
-}
-
-.toast-custom.show{
-
-    opacity:1;
-
-}
-
-.toast-custom.danger{
-
-    background:#dc3545;
-
-}
-
-.toast-custom.warning{
-
-    background:#ffc107;
-
-    color:#000;
-
-}
+```
