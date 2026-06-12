@@ -1,25 +1,27 @@
-.loader-overlay{
+const Toast = {
 
-    position:fixed;
+    show(message,type="success"){
 
-    top:0;
+        const toast=document.createElement("div");
 
-    left:0;
+        toast.className=`toast-custom ${type}`;
 
-    width:100%;
+        toast.innerHTML=message;
 
-    height:100%;
+        document.body.appendChild(toast);
 
-    background:rgba(255,255,255,.7);
+        setTimeout(()=>{
 
-    display:flex;
+            toast.classList.add("show");
 
-    justify-content:center;
+        },100);
 
-    align-items:center;
+        setTimeout(()=>{
 
-    z-index:99999;
+            toast.remove();
 
-    backdrop-filter:blur(3px);
+        },3000);
 
-}
+    }
+
+};
