@@ -1,4 +1,3 @@
-```javascript
 const Toast = {
 
     show(message, type = "success") {
@@ -56,4 +55,3 @@ const Toast = {
     }
 
 };
-```
